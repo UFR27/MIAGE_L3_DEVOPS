@@ -4,10 +4,10 @@ services:
     image: 'nginx-php:latest'
     container_name: nginx-php-container
 # à décommenter pour l'exercice sur les volumes ( partie config et sources des sites ) 
-    volumes:
-     - './pages/:/var/www/html'
-#      - './conf/symfony-vhost.conf:/etc/nginx/nginx.conf'
-#      - './docker/php.ini:/etc/php.ini'
+#   volumes:
+#     - './:/var/www/'
+#     - './conf/symfony-vhost.conf:/etc/nginx/nginx.conf'
+#     - './docker/php.ini:/etc/php.ini'
     ports:
       - '8000:80'
   mysql:
