@@ -23,11 +23,12 @@ services:
         ports:
             - "8050:80"
         volumes:
-            - ./www:/var/www/html:ro
+            - ./www:/var/www:ro
             - ./.docker/nginx/conf/nginx.conf:/etc/nginx/conf.d/default.conf:ro
         depends_on:
             - php
     php:
+        user: "userdocker:userdocker"
         container_name: miage-php
         image: miage-php-img:v2
         build:
@@ -36,7 +37,7 @@ services:
         depends_on:
             - db
         volumes:
-            - ./www:/var/www/html
+            - ./www:/var/www
             - .docker/php/conf/zzzz_custom.ini:/usr/local/etc/php/conf.d/zzzz_custom.ini
         extra_hosts:
           - "host.docker.internal:host-gateway"
